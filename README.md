@@ -28,4 +28,12 @@ A reusable, modern React dashboard template designed for analytics and managemen
 
 ---
 
-Part of the BuildSphere ecosystem.
+## 🔗 BuildSphere Ecosystem
+
+This project is part of the BuildSphere 60-Day Challenge:
+
+- Airline Booking System
+- Student Dashboard
+- Booking Analytics
+- Data Toolkit
+- React Dashboard Template
