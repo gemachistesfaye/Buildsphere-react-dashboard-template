@@ -6,7 +6,7 @@ import {
   GraduationCap, 
   Briefcase, 
   Settings, 
-  LogOut 
+  
 } from "lucide-react";
 
 
@@ -78,19 +78,6 @@ export const Sidebar = () => {
             </div>
         </div>
 
-        <div className={sidebarStyles.userProfile}>
-          <div className="relative">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center text-sm font-bold text-white shadow-md">
-                JD
-            </div>
-            <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-emerald-500 border-2 border-white rounded-full"></div>
-          </div>
-          <div className="flex flex-col overflow-hidden">
-            <span className="text-sm font-bold text-slate-900 truncate">Gemachis T.</span>
-            <span className="text-xs text-slate-500 truncate">Admin Account</span>
-          </div>
-          <LogOut size={16} className="ml-auto text-slate-400 hover:text-red-500 transition-colors" />
-        </div>
       </div>
     </aside>
   );
