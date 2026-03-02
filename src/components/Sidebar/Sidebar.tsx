@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import { 
   LayoutDashboard, 
   BarChart3, 
@@ -25,15 +26,14 @@ export const sidebarStyles = {
   
   footer: "mt-auto pt-6 flex flex-col gap-4",
   divider: "h-px bg-slate-200 dark:bg-slate-700 w-full",
-  userProfile: "flex items-center gap-3 p-2 rounded-xl hover:bg-white dark:hover:bg-slate-800 hover:shadow-sm transition-all cursor-pointer border border-transparent hover:border-slate-200/50 dark:hover:border-slate-700/50"
 };
 
 const navItems = [
-  { name: "Dashboard", icon: <LayoutDashboard size={20} />, active: true },
-  { name: "Analytics", icon: <BarChart3 size={20} /> },
-  { name: "Booking", icon: <CalendarDays size={20} /> },
-  { name: "Students", icon: <GraduationCap size={20} /> },
-  { name: "Toolkit", icon: <Briefcase size={20} /> },
+  { name: "Dashboard", path: "/", icon: LayoutDashboard },
+  { name: "Analytics", path: "/analytics", icon: BarChart3 },
+  { name: "Booking", path: "/booking", icon: CalendarDays },
+  { name: "Students", path: "/students", icon: GraduationCap },
+  { name: "Toolkit", path: "/toolkit", icon: Briefcase },
 ];
 
 export const Sidebar = () => {
@@ -43,7 +43,7 @@ export const Sidebar = () => {
       <div className={sidebarStyles.logo}>
         <div className={sidebarStyles.logoIcon}>
           <svg viewBox="0 0 24 24" className="w-5 h-5 text-white fill-current">
-             <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
           </svg>
         </div>
         <span>BuildSphere</span>
@@ -52,28 +52,32 @@ export const Sidebar = () => {
       {/* Navigation Links */}
       <nav className={sidebarStyles.nav}>
         {navItems.map((item) => (
-          <div
+          <NavLink
             key={item.name}
-            className={`${sidebarStyles.link} ${item.active ? sidebarStyles.linkActive : ""}`}
+            to={item.path}
+            className={({ isActive }) =>
+              `${sidebarStyles.link} ${isActive ? sidebarStyles.linkActive : ""}`
+            }
           >
-            <span className={item.active ? "text-blue-600 dark:text-blue-500" : "group-hover:text-blue-600 dark:group-hover:text-blue-500 transition-colors"}>
-              {item.icon}
-            </span>
+            <item.icon size={20} className="text-current" />
             <span>{item.name}</span>
-          </div>
+          </NavLink>
         ))}
       </nav>
 
       {/* Footer Section */}
       <div className={sidebarStyles.footer}>
         <div className={sidebarStyles.divider} />
-        
-        <div className="flex flex-col gap-1">
-            <div className="flex items-center gap-3 px-4 py-2 text-slate-500 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-500 cursor-pointer text-sm transition-colors">
-                <Settings size={18} />
-                <span>Settings</span>
-            </div>
-        </div>
+        <NavLink
+          to="/settings"
+          className={`
+            flex items-center gap-3 px-4 py-2 text-slate-500 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-500
+            cursor-pointer text-sm transition-colors rounded-xl
+          `}
+        >
+          <Settings size={18} />
+          <span>Settings</span>
+        </NavLink>
       </div>
     </aside>
   );
