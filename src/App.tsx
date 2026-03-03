@@ -13,7 +13,7 @@ import Settings from "./pages/Settings";
 export default function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
-  // Sync dark mode with html element
+  
   useEffect(() => {
     document.documentElement.classList.toggle("dark", isDarkMode);
   }, [isDarkMode]);
