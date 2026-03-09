@@ -3,7 +3,7 @@ import { Sidebar } from "../Sidebar/Sidebar";
 
 interface LayoutProps {
   children: ReactNode;
-  isDarkMode?: boolean; // optional for dark mode
+  isDarkMode?: boolean; 
 }
 
 export const Layout = ({ children, isDarkMode = false }: LayoutProps) => {
