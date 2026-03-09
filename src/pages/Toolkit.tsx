@@ -13,6 +13,8 @@ import {
   AlertCircle
 } from 'lucide-react';
 
+import { Layout } from "../components/Layout/Layout";
+
 
 
 type RequestMethod = 'GET' | 'POST' | 'PUT' | 'DELETE';
@@ -140,6 +142,8 @@ export default function App() {
   };
 
   return (
+<Layout>
+    
     <div className="min-h-screen bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-200 font-sans selection:bg-indigo-100 dark:selection:bg-indigo-500/30">
       <div className="max-w-7xl mx-auto px-4 py-10 md:px-8">
         
@@ -304,5 +308,6 @@ export default function App() {
         </footer>
       </div>
     </div>
+    </Layout>
   );
 }
