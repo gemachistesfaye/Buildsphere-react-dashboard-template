@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
+import { Layout } from '../components/Layout/Layout';
 import { 
   Search, 
   Download, 
@@ -18,6 +19,7 @@ import {
   Plane,
   MoreVertical
 } from 'lucide-react';
+
 
  interface BookingType {
   id: string;
@@ -123,7 +125,8 @@ const handleSave = (e: React.FormEvent<HTMLFormElement>) => {
   setEditingBooking(null);
 };
 
-  return (
+  return ( 
+    <Layout>
     <div className="min-h-screen p-4 sm:p-6 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-200">
       
       {/* EXPORT STYLES: This ensures the PDF only shows passenger data */}
@@ -418,5 +421,6 @@ const handleSave = (e: React.FormEvent<HTMLFormElement>) => {
         </div>
       )}
     </div>
+    </Layout>
   );
 }
