@@ -14,8 +14,10 @@ import {
   Camera,
   CheckCircle2,
   AlertCircle,
-  Loader2
+  Loader2,
 } from 'lucide-react';
+
+import { Layout } from "../components/Layout/Layout";
 
 // --- Types ---
 
@@ -212,6 +214,7 @@ export default function App() {
   };
 
   return (
+     <Layout> 
     <div className="min-h-screen bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-200 p-4 md:p-8 transition-colors duration-300">
       <div className="max-w-6xl mx-auto space-y-8">
         
@@ -464,5 +467,7 @@ export default function App() {
         </footer>
       </div>
     </div>
+    </Layout>
   );
 }
+
