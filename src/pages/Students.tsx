@@ -16,6 +16,8 @@ import {
   AlertTriangle
 } from 'lucide-react';
 
+import { Layout } from '../components/Layout/Layout';
+
 export default function Students() {
   const [searchTerm, setSearchTerm] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -113,6 +115,8 @@ export default function Students() {
   };
 
   return (
+
+    <Layout> 
     <div className="min-h-screen p-4 sm:p-6 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-200">
       
       
@@ -397,5 +401,7 @@ export default function Students() {
         </div>
       )}
     </div>
+
+    </Layout>
   );
 }
