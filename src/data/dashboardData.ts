@@ -11,7 +11,6 @@ export interface DashboardStat {
   data?: number[];
 }
 
-
 export const dashboardStats: DashboardStat[] = [
   {
     id: "stat-1",
