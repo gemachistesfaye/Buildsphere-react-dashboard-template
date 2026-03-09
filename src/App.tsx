@@ -19,13 +19,13 @@ export default function App() {
   }, [isDarkMode]);
 
   return (
+  
     <Router>
-      <div className="flex min-h-screen bg-slate-100 dark:bg-slate-900 transition-colors">
-        <Sidebar />
-        <div className="flex-1 flex flex-col">
-          <Navbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
+  <Sidebar />
+  <div className="flex-1 flex flex-col">
+    <Navbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
+    <main className="flex-1 overflow-hidden">
 
-          <main className="flex-1 p-8 overflow-hidden">
             <Routes>
               <Route path="/" element={<Dashboard />} />
               <Route path="/analytics" element={<Analytics />} />
@@ -35,8 +35,7 @@ export default function App() {
               <Route path="/settings" element={<Settings />} />
             </Routes>
           </main>
-        </div>
-      </div>
-    </Router>
+  </div>
+</Router>
   );
 }
