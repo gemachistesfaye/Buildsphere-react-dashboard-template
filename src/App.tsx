@@ -9,7 +9,7 @@ import Booking from "./pages/Booking";
 import Students from "./pages/Students";
 import Toolkit from "./pages/Toolkit";
 import Settings from "./pages/Settings";
-import Users from "./pages/UsersPage";
+import UsersTablePage from "./pages/UsersTablePage";
 
 export default function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -34,7 +34,7 @@ export default function App() {
               <Route path="/students" element={<Students />} />
               <Route path="/toolkit" element={<Toolkit />} />
               <Route path="/settings" element={<Settings />} />
-              <Route path="/users" element={<Users />} />
+              <Route path="/students/users" element={<UsersTablePage />} />
             </Routes>
           </main>
   </div>
