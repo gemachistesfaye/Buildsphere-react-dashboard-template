@@ -15,7 +15,14 @@ const navItems = [
   { name: "Dashboard", path: "/", icon: LayoutDashboard },
   { name: "Analytics", path: "/analytics", icon: BarChart3 },
   { name: "Booking", path: "/booking", icon: CalendarDays },
-  { name: "Students", path: "/students", icon: GraduationCap },
+  { 
+    name: "Students", 
+    path: "/students", 
+    icon: GraduationCap,
+    children: [
+      { name: "Users Table", path: "/students/users" },
+    ]
+  },
   { name: "Toolkit", path: "/toolkit", icon: Briefcase },
 ];
 
@@ -26,7 +33,7 @@ export const Sidebar = () => {
 
   return (
     <>
-  
+      {/* Mobile toggle button */}
       <button
         className="md:hidden fixed top-4 left-4 z-50 p-2 bg-blue-600 text-white rounded-lg shadow-lg hover:bg-blue-700 transition-colors"
         onClick={toggleSidebar}
@@ -58,21 +65,41 @@ export const Sidebar = () => {
         {/* Navigation */}
         <nav className="flex flex-col gap-1.5 flex-grow">
           {navItems.map((item) => (
-            <NavLink
-              key={item.name}
-              to={item.path}
-              onClick={() => setIsOpen(false)} 
-              className={({ isActive }) =>
-                `group flex items-center gap-3 px-4 py-3 rounded-xl 
-                 text-slate-500 dark:text-slate-300 font-medium transition-all duration-200
-                 hover:bg-white hover:text-blue-600 hover:shadow-sm
-                 dark:hover:bg-slate-800 active:scale-[0.98] cursor-pointer
-                 ${isActive ? 'bg-white dark:bg-slate-800 text-blue-600 dark:text-blue-500 shadow-sm border border-slate-200/50 dark:border-slate-700/50' : ''}`
-              }
-            >
-              <item.icon size={20} className="text-current" />
-              <span>{item.name}</span>
-            </NavLink>
+            <div key={item.name}>
+              <NavLink
+                to={item.path}
+                onClick={() => setIsOpen(false)}
+                className={({ isActive }) =>
+                  `group flex items-center gap-3 px-4 py-3 rounded-xl 
+                   text-slate-500 dark:text-slate-300 font-medium transition-all duration-200
+                   hover:bg-white hover:text-blue-600 hover:shadow-sm
+                   dark:hover:bg-slate-800 active:scale-[0.98] cursor-pointer
+                   ${isActive ? 'bg-white dark:bg-slate-800 text-blue-600 dark:text-blue-500 shadow-sm border border-slate-200/50 dark:border-slate-700/50' : ''}`
+                }
+              >
+                <item.icon size={20} className="text-current" />
+                <span>{item.name}</span>
+              </NavLink>
+
+              {/* Nested children */}
+              {item.children && (
+                <div className="ml-6 flex flex-col gap-1 mt-1">
+                  {item.children.map((child) => (
+                    <NavLink
+                      key={child.name}
+                      to={child.path}
+                      onClick={() => setIsOpen(false)}
+                      className={({ isActive }) =>
+                        `text-slate-500 dark:text-slate-300 text-sm px-4 py-2 rounded-lg hover:bg-white hover:text-blue-600 dark:hover:bg-slate-800
+                         ${isActive ? 'bg-white dark:bg-slate-800 text-blue-600 dark:text-blue-500 shadow-sm border border-slate-200/50 dark:border-slate-700/50' : ''}`
+                      }
+                    >
+                      {child.name}
+                    </NavLink>
+                  ))}
+                </div>
+              )}
+            </div>
           ))}
         </nav>
 
@@ -90,7 +117,7 @@ export const Sidebar = () => {
         </div>
       </aside>
 
-      {/* Overlay for mobile */}
+      {/* Mobile overlay */}
       {isOpen && (
         <div
           className="fixed inset-0 bg-black/25 z-40 md:hidden"
@@ -100,3 +127,5 @@ export const Sidebar = () => {
     </>
   );
 };
+
+export default Sidebar;
