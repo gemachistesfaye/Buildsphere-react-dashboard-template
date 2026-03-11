@@ -43,3 +43,49 @@ export const users: User[] = [
     role: "Backend Developer" 
   },
 ];
+
+
+// Chart & dashboard mock data
+
+export interface StackedBar {
+  month: string;
+  productA: number;
+  productB: number;
+}
+
+export const stackedBarData: StackedBar[] = [
+  { month: "Jan", productA: 30, productB: 20 },
+  { month: "Feb", productA: 50, productB: 40 },
+  { month: "Mar", productA: 70, productB: 60 },
+  { month: "Apr", productA: 45, productB: 30 },
+  { month: "May", productA: 90, productB: 70 },
+  { month: "Jun", productA: 65, productB: 55 },
+];
+
+export interface AreaChartData {
+  date: string;
+  revenue: number;
+}
+
+export const areaChartData: AreaChartData[] = [
+  { date: "2026-01-01", revenue: 100 },
+  { date: "2026-01-02", revenue: 150 },
+  { date: "2026-01-03", revenue: 120 },
+  { date: "2026-01-04", revenue: 180 },
+  { date: "2026-01-05", revenue: 210 },
+  { date: "2026-01-06", revenue: 190 },
+];
+
+export interface LineChartData {
+  month: string;
+  users: number;
+}
+
+export const lineChartData: LineChartData[] = [
+  { month: "Jan", users: 10 },
+  { month: "Feb", users: 15 },
+  { month: "Mar", users: 12 },
+  { month: "Apr", users: 22 },
+  { month: "May", users: 30 },
+  { month: "Jun", users: 28 },
+];
