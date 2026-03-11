@@ -1,45 +1,28 @@
 import React from "react";
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  ResponsiveContainer,
-} from "recharts";
+import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from "recharts";
+import { Users } from "lucide-react";
+import type { LineChartData } from "../data/mockData";
 
 interface LineChartCardProps {
   title: string;
-  dataKey: string; 
-  data: { [key: string]: number | string }[];
+  data: LineChartData[];
+  dataKey: keyof LineChartData;
 }
 
-const LineChartCard: React.FC<LineChartCardProps> = ({ title, dataKey, data }) => {
-  return (
-    <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-4 shadow-sm">
-      <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-3">{title}</h2>
-      <ResponsiveContainer width="100%" height={250}>
-        <LineChart data={data}>
-          <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
-          <XAxis dataKey="month" stroke="#64748b" />
-          <YAxis stroke="#64748b" />
-          <Tooltip 
-            contentStyle={{ backgroundColor: '#1e293b', borderRadius: 8, border: 'none' }}
-            itemStyle={{ color: '#fff' }}
-          />
-          <Line
-            type="monotone"
-            dataKey={dataKey}
-            stroke="#3b82f6"
-            strokeWidth={3}
-            dot={{ r: 4 }}
-            activeDot={{ r: 6 }}
-          />
-        </LineChart>
-      </ResponsiveContainer>
+export const LineChartCard: React.FC<LineChartCardProps> = ({ title, data, dataKey }) => (
+  <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all duration-300">
+    <div className="flex items-center gap-2 mb-4">
+      <Users className="w-5 h-5 text-blue-500" />
+      <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-100">{title}</h2>
     </div>
-  );
-};
-
-export default LineChartCard;
+    <ResponsiveContainer width="100%" height={250}>
+      <LineChart data={data}>
+        <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f0" className="dark:opacity-10" />
+        <XAxis dataKey="month" stroke="#64748b" axisLine={false} tickLine={false} fontSize={12} />
+        <YAxis stroke="#64748b" axisLine={false} tickLine={false} fontSize={12} />
+        <Tooltip contentStyle={{ backgroundColor: "#1e293b", borderRadius: 12, border: "none" }} itemStyle={{ color: "#fff" }} />
+        <Line type="monotone" dataKey={dataKey} stroke="#3b82f6" strokeWidth={3} dot={{ r: 4, fill: "#3b82f6", strokeWidth: 2, stroke: "#fff" }} activeDot={{ r: 6 }} />
+      </LineChart>
+    </ResponsiveContainer>
+  </div>
+);
