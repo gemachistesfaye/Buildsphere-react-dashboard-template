@@ -1,4 +1,4 @@
-import Table from "../components/Table";
+import Table from "../components/Table/Table";
 import { users } from "../data/mockData";
 import { Layout } from "../components/Layout/Layout";
 
