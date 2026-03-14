@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import StatCard from "../components/dashboard/StatCard";
+import AIInsightsCard from "../components/dashboard/AIInsightsCard"; // make sure this path is correct
 import { dashboardStats } from "../data/dashboardData";
 import { Calendar, Download } from "lucide-react";
 import { Layout } from "../components/Layout/Layout";
@@ -49,6 +50,19 @@ export default function Dashboard() {
         {dashboardStats.map((stat) => (
           <StatCard key={stat.id} {...stat} />
         ))}
+      </div>
+
+      {/* AI Insights Section */}
+      <div className="mt-8">
+        <AIInsightsCard
+          title="Neural Logic Insight"
+          insights={[
+            "AI detected a shift in user sentiment toward sustainable features.",
+            "Optimizing database indexing could reduce latency by 240ms.",
+            "Anomaly detected in region US-EAST-1: potential traffic spike predicted for 14:00 UTC.",
+            "New personalization vector available based on last 48 hours of interaction data."
+          ]}
+        />
       </div>
     </Layout>
   );
